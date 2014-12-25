@@ -1,10 +1,15 @@
 var mainState = {
     preload: function() {
+      game.load.image('player', 'assets/player.png');
     },
 
     create: function() {
       game.stage.backgroundColor = '#3498db';
       game.physics.startSystem(Phaser.Physics.ARCADE);
+      this.player = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
+      this.player.anchor.setTo(0.5, 0.5);
+      game.physics.arcade.enable(this.player);
+      this.player.body.gravity.y = 500;
     },
 
     update: function() {
