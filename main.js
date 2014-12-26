@@ -12,10 +12,9 @@ var mainState = {
     this.createWorld();
 
     this.player = game.add.sprite(50, game.world.centerY, 'player');
-    this.player.anchor.setTo(0.5, 0.5);
+    this.player.anchor.setTo(0.19, 0.72);
     game.physics.arcade.enable(this.player);
     this.player.body.gravity.y = 500;
-
   },
 
   update: function() {
@@ -28,6 +27,13 @@ var mainState = {
       this.player.body.velocity.x += 20;
     } else if (this.player.body.velocity.x > 0) {
       this.player.body.velocity.x -= 2;
+    }
+    if (this.cursor.up.isDown) {
+      this.player.body.angularVelocity = -80;
+    } else if (this.player.body.rotation >= -90 && this.player.body.rotation < 0) {
+      this.player.body.angularVelocity = 200;
+    } else if (this.player.body.rotation = 0) {
+      this.player.body.angularVelocity = 0;
     }
   },
 
