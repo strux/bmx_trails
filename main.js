@@ -24,8 +24,10 @@ var mainState = {
     },
 
     movePlayer: function() {
-      if (this.cursor.right.isDown) {
-        this.player.body.velocity.x = 200;
+      if (this.cursor.right.isDown && this.player.body.velocity.x <= 500) {
+        this.player.body.velocity.x += 20;
+      } else if (this.player.body.velocity.x > 0) {
+        this.player.body.velocity.x -= 2;
       }
    },
 
